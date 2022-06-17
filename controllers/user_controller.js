@@ -3,8 +3,10 @@ const User=require('../models/user'); // acquiring user from db
 module.exports.profile=function(req,res){
     return res.render('user_profile',{
         title:"profile",
-    })
+    });
 }
+
+
 // render sign in page
 module.exports.signUp=function(req,res){
     return res.render('user_sign_up',{
