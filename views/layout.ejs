@@ -6,13 +6,19 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title><%=title%></title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/css/layout.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href="/css/layout.css">
+    <link rel='stylesheet' type='text/css' media='screen' href="/css/header.css">
+    <link rel='stylesheet' type='text/css' media='screen' href="/css/footer.css">
     <%-style%>
  </head>
  <body>
     <%-include ('_header');%>
-    <!--body conatins variable part of pages> -->
-     <%-body%> 
+
+    <!--body contains variable part of pages> -->
+    <main id ="layout-main">
+      <%-body%> 
+    </main>
+    
     <%-include ('_footer');%>
     <%-script%>
  </body>

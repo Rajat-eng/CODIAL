@@ -7,19 +7,33 @@ const cookieParser=require('cookie-parser');
 const port=8000;
 const db=require('./config/mongoose');
 
-// session cookies
-const session=require('express-session'); // create session cookie in encrypred form
+// layouts
+const expressLayouts=require('express-ejs-layouts');
+
+// passport
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
 const MongoStore=require('connect-mongo');
+
+// session cookies
+const session=require('express-session'); // create session cookie in encrypred form
+
+// SASS
+const sassMiddleware=require('node-sass-middleware');
+app.use(sassMiddleware({
+  src:'./assets/scss',
+  dest:'./assets/css',
+  debug:true,
+  outputStyle:'extended',
+  prefix:'/css'
+})
+);
 
 // parser use
 app.use(express.urlencoded());
 app.use(cookieParser());
 
 // use layouts
-const expressLayouts=require('express-ejs-layouts');
-const { default: mongoose } = require('mongoose');
 app.use(expressLayouts);
 
 
@@ -45,7 +59,7 @@ app.use(session({
         saveUninitialized:false,
         resave:false,
         cookie:{
-            maxAge: (1000*60*100), // 1sec*60*100
+            maxAge: (1000*60*10), // 1sec*60*10
         },
         store:MongoStore.create( // session gets permanenntly stored even if server expires
             {
@@ -68,7 +82,6 @@ app.use(passport.setAuthenticatedUser); // checks if a cookie is present and sen
 app.use('/',require('./routes'));
 
 
-
 // running engine
 app.listen(port,function(err){
     if(err){
@@ -76,4 +89,4 @@ app.listen(port,function(err){
         return;
     }
     console.log(`server is running on port:${port}`);
-})
+});

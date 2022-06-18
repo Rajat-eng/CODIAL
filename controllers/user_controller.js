@@ -1,7 +1,5 @@
 const User=require('../models/user'); // acquiring user from db
 
-// --> passport authentication is avialble globally bcoz router has acquired it
-
 module.exports.profile=function(req,res){
     return res.render('user_profile',{
         title:"profile",
