@@ -81,7 +81,6 @@ app.use(passport.setAuthenticatedUser); // checks if a cookie is present and sen
 //  use routes
 app.use('/',require('./routes'));
 
-
 // running engine
 app.listen(port,function(err){
     if(err){
