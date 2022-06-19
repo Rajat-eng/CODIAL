@@ -1,5 +1,12 @@
 body {
-  background-color: white; }
-  body #layout-main {
-    height: 100%fit-content;
-    background-color: #af5dbc; }
+  background-color: white;
+ 
+}
+#layout-main {
+  height: 100%vh;
+}
+
+
+
+  
+

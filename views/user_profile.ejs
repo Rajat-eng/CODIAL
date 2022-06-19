@@ -1,5 +1,16 @@
 <link rel="stylesheet" href="/css/user_profile.css">
 <h1>codial/profile Page</h1>
-<p><%=user.name%></p>
-<p><%=user.email%></p>
-   
+
+  <!-- no need to check locals.user bcoz password authentication is there -->
+<% if(user.id==profile_user.id){%>
+    <!-- if user matches then show the form  -->
+    <form action="/users/update/<%=profile_user.id%>" method="post">
+        <input type="text" placeholder="Your Name"   name="name" value="<%=profile_user.name%>"  required>
+        <input type="email" placeholder="Your Email" name="email" value="<%=profile_user.email%>"  required>
+        <input type="submit" value="update">
+    </form>
+<%}else{%>
+    <!-- only profle info -->
+    <p><%=profile_user.name%></p>
+    <p><%=profile_user.email%></p>
+<%}%>

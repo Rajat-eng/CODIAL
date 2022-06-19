@@ -28,13 +28,13 @@ module.exports.create=function(req,res){
 
 module.exports.destroy= function(req,res){
     Comment.findById(req.params.id,function(err,comment){
-        if(comment.user==req.user.id ){
+        if(comment.user==req.user.id || comment.post.user==req.user.id){ // if user who has commented also has logged in  
             let postId=comment.post; // extract post id on which comment is made before deleteting comment
             comment.remove();
             Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}},function(err,post){
                 return res.redirect('back');
             }) // pull out id from list of coomets in post schema
-        }else{
+        } else{
             return res.redirect('back');
         }
     })
