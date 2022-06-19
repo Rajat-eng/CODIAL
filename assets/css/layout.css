@@ -1,5 +1,5 @@
 body {
   background-color: white; }
   body #layout-main {
-    height: 100vh;
+    height: 100%fit-content;
     background-color: #af5dbc; }
