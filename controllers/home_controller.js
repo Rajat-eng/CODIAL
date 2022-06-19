@@ -8,7 +8,7 @@ module.exports.home=function(req,res){
     Post.find({})
     .populate('user')
     .populate({
-        path:'comments', // commnets on post  from post schema
+        path:'comments', // commnets on post from post schema
         populate:{
             path:'user' // user who has commmented from comment schema
         }

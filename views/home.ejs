@@ -1,4 +1,4 @@
-
+    <link rel="">
     <h1>codial/Home</h1>
     <section id="feed-posts">
         <!-- form and posts is visible onlt when user is logged in -->
@@ -12,10 +12,11 @@
                 <% for(post of posts){%>
                     <li>
                         <%=post.content%>
+                        <br>
                         <%=post.user.name%>
                         <div class="post-comment">
                             <form action="/comments/create" method="post">
-                                <input type="text" name="content" placeholder="Add Comment">
+                                <input type="text" name="content" placeholder="Add Comment" required>
                                 <!-- id of post on which comment is made -->
                                 <input type="hidden" name="post" value="<%=post._id%>">
                                 <input type="submit" value="Add Comment">
