@@ -1,12 +1,5 @@
 body {
-  background-color: white;
- 
-}
-#layout-main {
-  height: 100%vh;
-}
-
-
-
-  
-
+  background-color: white; }
+  body #layout-main {
+    height: 200vh;
+    background-color: #af5dbc; }

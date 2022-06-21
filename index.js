@@ -20,6 +20,9 @@ const session=require('express-session'); // create session cookie in encrypred 
 
 // SASS
 const sassMiddleware=require('node-sass-middleware');
+const flash=require('connect-flash');
+const customMware=require('./config/middleware');
+
 app.use(sassMiddleware({
   src:'./assets/scss',
   dest:'./assets/css',
@@ -76,6 +79,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser); // checks if a cookie is present and sends user data to local
+app.use(flash());
+app.use(customMware.setFlash);
 
 
 //  use routes

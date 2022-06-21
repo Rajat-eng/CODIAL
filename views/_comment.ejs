@@ -1,7 +1,7 @@
 <li>
         <p>
         <%= comment.content%>
-        <%if(locals.user ){%>
+        <%if(locals.user && ( (locals.user.id==comment.user.id) || (locals.user.id==post.user.id) ) ){%>
             <small>
                 <a href="/comments/destroy/<%=comment.id%>">Delete</a>
             </small>

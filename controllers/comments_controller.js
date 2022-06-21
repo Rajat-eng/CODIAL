@@ -2,40 +2,40 @@ const Comment=require('../models/comment');
 const Post=require('../models/post');
 
 
-module.exports.create=function(req,res){
-    Post.findById(req.body.post,function(err,post){ // req.body.name is in type hidden home.ejs
-        if(err){
-            console.log("cannot find post");
-            return;
-        }
+module.exports.create=async function(req,res){
+    try{
+        let post=await Post.findById(req.body.post);
         if(post){ // if post exist
-            Comment.create({
+            let comment=await Comment.create({
                 content:req.body.content,
                 user:req.user._id,
-                post:post._id,
-            },function(err,comment){
-                if(err){
-                    console.log("cannot add comment");
-                    return;
-                }
-                post.comments.push(comment);
-                post.save(); // update and lock it
-                return res.redirect('/');
+                post:req.body.post,
             });
+            post.comments.push(comment);
+            post.save(); // update and lock it
+            req.flash('success','comment added to the post');
+            return res.redirect('/');
         }
-    });
+    }catch(err){
+        req.flash('error',err)
+    }
+    
 }
 
-module.exports.destroy= function(req,res){
-    Comment.findById(req.params.id,function(err,comment){
-        if(comment.user==req.user.id || comment.post.user==req.user.id){ // if user who has commented also has logged in  
+module.exports.destroy= async function(req,res){
+    try{
+        let comment=await Comment.findById(req.params.id);
+        if(comment.user==req.user.id){ // if user who has commented also has logged in  
             let postId=comment.post; // extract post id on which comment is made before deleteting comment
             comment.remove();
-            Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}},function(err,post){
-                return res.redirect('back');
-            }) // pull out id from list of coomets in post schema
+            let post=await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
+            req.flash('success','comment deleted from the post');
+            return res.redirect('back'); // pull out id from list of coomets in post schema
         } else{
+            req.flash('error','you cannot delete the comment');
             return res.redirect('back');
         }
-    })
+    }catch(err){
+        console.log("Error",err);
+    }
 }

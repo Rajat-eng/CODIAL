@@ -1,7 +1,7 @@
 <li>
     <p>
         <%=post.content%>                              
-        <%if(locals.user && (locals.user.id==post.user.id)){%>
+        <%if(locals.user && (locals.user.id==post.user.id)){%> 
             <small>
                 <a href="/posts/destroy/<%=post.id%>">Delete</a>
             </small>
@@ -23,7 +23,6 @@
     </div>
     <div class="post-comments-list">
         <ul id="post-comments-<%=post._id%> ">
-
             <%for(comment of post.comments){%>
               <%-include('_comment')%>
             <%}

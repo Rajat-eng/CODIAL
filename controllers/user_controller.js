@@ -66,7 +66,8 @@ module.exports.create=function(req,res){
 
 // get sign-in data
 module.exports.createSession=function(req,res){ 
-   return res.redirect('/');
+    req.flash('success','Hello Buddy')
+        return res.redirect('/');
 };
 
 module.exports.destroySession=function(req,res,next){
@@ -74,6 +75,7 @@ module.exports.destroySession=function(req,res,next){
         if(err){
             return next(err);
         }
+        req.flash('success','Bye Buddy')
         return res.redirect('/');
     });
 };

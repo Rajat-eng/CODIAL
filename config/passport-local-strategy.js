@@ -5,16 +5,17 @@ const User=require('../models/user');
 
 // authenticate using passport
 passport.use(new LocalStrategy({
-    usernameField:'email'
-    },function(email,password,done){ // email & password is written password in form
+    usernameField:'email',
+    passReqToCallback:true,
+    },function(req,email,password,done){ // email & password is written password in form
         // find user and establish identity
         User.findOne({email:email},function(err,user){ 
             if(err){
-                console.log("error in finding user");
+                req.flash('error',err);
                 return done(err);
             }
             if(!user || user.password!=password){
-                console.log('Invalid Username/password');
+                req.flash('error','Invalid Username/password');
                 return done(null,false); //no error but user is not found
             }
             return done(null,user);
