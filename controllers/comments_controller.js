@@ -25,7 +25,8 @@ module.exports.create=async function(req,res){
 module.exports.destroy= async function(req,res){
     try{
         let comment=await Comment.findById(req.params.id);
-        if(comment.user==req.user.id){ // if user who has commented also has logged in  
+        let post=await Post.findById(comment.post);
+        if(comment.user==req.user.id || post.user==req.user.id){ // if user who has commented also has logged in  
             let postId=comment.post; // extract post id on which comment is made before deleteting comment
             comment.remove();
             let post=await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});

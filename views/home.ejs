@@ -3,7 +3,6 @@
     <section id="feed-posts">
         <!-- form and posts is visible onlt when user is logged in -->
         <%if(locals.user){%> 
-            <h4>Posts</h4>
             <form action="/posts/create" id="new-post-form" method="post">
                 <textarea name="content" cols="30" row="3" placeholder="Type Here..."></textarea>
                 <input type="submit" value="Post">
