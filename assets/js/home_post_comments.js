@@ -51,13 +51,13 @@ class PostComments{
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comments-${postId}`).prepend(newComment);
                     pSelf.deleteComment($(' .delete-comment-button', newComment));  
-                    //successFlash(data.message);
+                    successFlash(data.message);
 
                 }, error: function(error){
                     console.log(error.responseText);
-                    //errorFlash(err.responseText);
+                    errorFlash(err.responseText);
                 }
-            })
+            });
         });
     }
 
@@ -88,10 +88,10 @@ class PostComments{
                 url:$(deleteLink).prop('href'),
                 success:function(data){
                     $(`#comment-${data.data.comment_id}`).remove();
-                    //successFlash(data.message);
+                    successFlash(data.message);
                 },error: function(err){
                     console.log(error.responseText);
-                    //errorFlash(err.responseText);
+                    errorFlash(err.responseText);
                 }
             });
         });

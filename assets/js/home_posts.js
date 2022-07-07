@@ -36,16 +36,17 @@
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button',newPost));
                     new PostComments(data.data.post._id);
-                    //successFlash(data.message);
+                    successFlash(data.message);
+
                 },error : function(err){
                     console.log(err.responseText);
-                    //errorFlash(err.responseText);
+                    errorFlash(err.responseText);
                 }
             });
         });
     }
 
-    
+
     let newPostDom=function(post){
         return $(`<li id="post-${post._id}">
                     <p>
@@ -86,12 +87,13 @@
                 success: function(data){
                     // console.log(data);
                     $(`#post-${data.data.post_id}`).remove();
-                    //successFlash(data.message);
+                    successFlash(data.message);
+                   
 
                 },
                 error: function(err){
                     console.log(err.responseText);
-                    //errorFlash(err.responseText);
+                    errorFlash(err.responseText);
                 }
             });
         }); 
