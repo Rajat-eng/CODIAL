@@ -13,6 +13,19 @@ module.exports.create=async function(req,res){
             });
             post.comments.push(comment);
             post.save(); // update and lock it
+
+
+            if(req.xhr){
+                comment=await comment.populate('user','name');
+                return res.status(200).json({
+                    data:{
+                        comment:comment
+                    },
+                    message:"Comment created"
+                })
+            }
+
+
             req.flash('success','comment added to the post');
             return res.redirect('/');
         }
@@ -30,6 +43,18 @@ module.exports.destroy= async function(req,res){
             let postId=comment.post; // extract post id on which comment is made before deleteting comment
             comment.remove();
             let post=await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
+
+
+            if(req.xhr){
+                return res.status(200).json({
+                    data: {
+                        comment_id: req.params.id
+                    },
+                    message: "Comment deleted"
+                });
+            }
+
+
             req.flash('success','comment deleted from the post');
             return res.redirect('back'); // pull out id from list of coomets in post schema
         } else{
