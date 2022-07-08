@@ -48,6 +48,8 @@ app.set('layout extractScripts',true);
 // use static
 app.use(express.static('./assets'));
 
+// make uploads path available 
+app.use('/uploads',express.static(__dirname + '/uploads'));
 
 // set up the view engine
 app.set('view engine','ejs');
@@ -62,7 +64,7 @@ app.use(session({
         saveUninitialized:false,
         resave:false,
         cookie:{
-            maxAge: (1000*60*10), // 1sec*60*10
+            maxAge: (1000*60*60), // 1sec*60*60
         },
         store:MongoStore.create( // session gets permanenntly stored even if server expires
             {
