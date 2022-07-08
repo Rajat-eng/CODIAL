@@ -88,8 +88,6 @@
                     // console.log(data);
                     $(`#post-${data.data.post_id}`).remove();
                     successFlash(data.message);
-                   
-
                 },
                 error: function(err){
                     console.log(err.responseText);
@@ -105,17 +103,16 @@
         $('#posts-list-container>ul>li').each(function(){
 
             let self=$(this); // this post
-            // console.log(self);
+            let postId=self.attr('id').split("-")[1];
             let deleteButton=$(' .delete-post-button',self);
+
             deletePost(deleteButton);
 
-
-            let postId=self.prop('id').split("-")[1];
             new PostComments(postId);
         });
     }
 
-       createPost();
-       convertPostsToAjax();
+        createPost();
+        convertPostsToAjax();
 
 }
