@@ -102,7 +102,7 @@ module.exports.create=function(req,res){
 // get sign-in data
 module.exports.createSession=function(req,res){ 
     req.flash('success','Hello Buddy')
-        return res.redirect('/');
+        return res.redirect('/');  // index home page
 };
 
 module.exports.destroySession=function(req,res,next){
