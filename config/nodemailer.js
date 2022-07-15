@@ -9,8 +9,8 @@ let transporter=nodemailer.createTransport({
     port:587,
     secure:false,
     auth:{
-        user:'vrajat269@gmail.com',
-        pass:'29@bareilly'
+        user: "vrajat269@gmail.com",
+        pass: "ozkn amrm icmb eopd",  // 2 step verification password req
     }
 });
 
@@ -22,7 +22,7 @@ let renderTemplate=(data,relativePath) =>{
         data,
         function(err,template){
             if(err){
-                console.log("error inrendering email template" ,err);
+                console.log("error in rendering email template" ,err);
                 return;
             }
             mailHTML=template;

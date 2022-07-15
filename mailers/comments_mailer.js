@@ -1,12 +1,16 @@
 const nodemailer=require('../config/nodemailer');
 
 exports.newComment=(comment)=>{
-    console.log('new comment mailer');
+   
+
+    let htmlString=nodemailer.renderTemplate({comment:comment},'/comments/new_comment.ejs')
+
+
     nodemailer.transporter.sendMail({
-        from:'r1a1@gmail.com',
-        to:'comment.user.email',
+        from:'vrajat269@gmail.com',
+        to:comment.user.email,
         subject:'new Comment Published',
-        html:'<h1>Comment Published</h1>'
+        html:htmlString,
     },(err,info)=>{
         if(err){
             console.log('error in sending mail',err);
@@ -16,3 +20,5 @@ exports.newComment=(comment)=>{
         return;
     });
 }
+
+

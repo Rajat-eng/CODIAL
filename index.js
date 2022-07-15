@@ -6,6 +6,7 @@ const cookieParser=require('cookie-parser');
 
 const port=8000;
 const db=require('./config/mongoose');
+const path=require('path');
 
 // layouts
 const expressLayouts=require('express-ejs-layouts');
@@ -51,7 +52,7 @@ app.set('layout extractScripts',true);
 app.use(express.static('./assets'));
 
 // make uploads path available 
-app.use('/uploads',express.static(__dirname + '/uploads'));
+app.use('/uploads',express.static( path.join(__dirname,'uploads')) );
 
 // set up the view engine
 app.set('view engine','ejs');

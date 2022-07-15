@@ -19,7 +19,6 @@ module.exports.create=async function(req,res){
             commentsMailer.newComment(comment);
 
             if(req.xhr){
-                // comment=await comment.populate('user','name');
                 return res.status(200).json({
                     data:{
                         comment:comment
@@ -27,7 +26,6 @@ module.exports.create=async function(req,res){
                     message:"Comment created"
                 })
             }
-
 
             req.flash('success','comment added to the post');
             return res.redirect('/');

@@ -2,6 +2,7 @@ const User=require('../models/user'); // acquiring user from db
 const fs=require('fs');
 const path=require('path');
 
+
 module.exports.profile=function(req,res){
     User.findById(req.params.id,function(err,user){
         return res.render('user_profile',{
@@ -19,10 +20,11 @@ module.exports.update= async function(req,res){
     // }else{
     //     return res.status('401').send('Unauthorized');
     // }
-
+    
     if(req.user.id==req.params.id){
         try{
             let user=await User.findById(req.params.id);
+            
             // cannot access req.body directly . Multer has to be used
             User.uploadedAvatar(req,res,function(err){
                 if(err){
@@ -32,12 +34,13 @@ module.exports.update= async function(req,res){
                 user.name=req.body.name;
                 user.email=req.body.email;
                 if(req.file){
+                    
                     // if user already contains image then delete it 
                     if(user.avatar && fs.existsSync(path.join(__dirname,'..',user.avatar))){
                         fs.unlinkSync(path.join(__dirname,'..',user.avatar));
                     }
                     // path of this file is save in user avatar in userSchema
-                    user.avatar=User.avatarPath + '/' + req.file.filename;
+                    user.avatar=path.join(User.avatarPath,req.file.filename);
                 }
                 user.save();
                 return res.redirect('back');
