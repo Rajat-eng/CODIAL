@@ -1,5 +1,11 @@
 body {
-  background-color: white; }
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #020024 0%, #322cf8 49%, #985cf9 100%);
+  color: black; }
   body #layout-main {
-    height: 200vh;
-    background-color: #af5dbc; }
+    min-height: 100%;
+    height: fit-content;
+    margin-bottom: 20px;
+    padding: 10 px; }

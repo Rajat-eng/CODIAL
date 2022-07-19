@@ -1,11 +1,17 @@
 <link rel="stylesheet" href="/css/home.css">
+
+
 <div id="home-container">
+        
     <section id="feed-posts">
+        <h2>
+            POSTS
+        </h2>
         <!-- form and posts is visible onlt when user is logged in -->
         <%if(locals.user){%> 
             <form action="/posts/create" id="new-post-form" method="post">
                 <textarea name="content" cols="30" row="3" placeholder="Type Here..."></textarea>
-                <input type="submit" value="Post">
+                <input type="submit" value="Post" id="submit-btn">
             </form>
         <%}%>
 
@@ -15,11 +21,12 @@
                        <%-include('_post')-%>
                     <%}%>
                 </ul>    
-            </div>   
+            </div>
+
     </section>
 
     <section id="user-friends">
-        <h4>friends</h4>
+        <h3>FRIENDS</h3>
         <% for(u of all_users){%>
             <p>
                 <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
@@ -27,5 +34,13 @@
         <%}%>
     </section>
 </div>
+
 <script src="./js/home_post_comments.js" ></script>
 <script src="./js/home_posts.js"></script>  
+<script src="./js/toggle_like.js"></script>
+<script>
+    $(' .like-btn-link').each(function(){
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>

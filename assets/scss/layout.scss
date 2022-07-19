@@ -1,8 +1,14 @@
 body{
-    background-color: white;
-    
+    margin:0;
+    height:100%;
+    width:100%;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(50,44,248,1) 49%, rgba(152,92,249,1) 100%);
+    color: rgb(0, 0, 0);
     #layout-main{
-        height:200vh;
-        background-color: rgb(175, 93, 188);
+        min-height:100%;
+        height:fit-content;
+        margin-bottom: 20px;
+        padding:10 px;
+        // background-color: rgb(175, 93, 188);
     }
 }

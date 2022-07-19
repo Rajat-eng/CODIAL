@@ -50,9 +50,10 @@ class PostComments{
                     //console.log(data.data.comment);
                     let newComment = pSelf.newCommentDom(data.data.comment);
                     $(`#post-comments-${postId}`).prepend(newComment);
-                    pSelf.deleteComment($(' .delete-comment-button', newComment));  
-                    successFlash(data.message);
-
+                    
+                    pSelf.deleteComment($(' .delete-comment-button', newComment));
+                    successFlash(data.message); 
+                    new ToggleLike($(' .like-btn-link',newComment)); 
                 }, error: function(error){
                     console.log(error.responseText);
                     errorFlash(err.responseText);
@@ -63,19 +64,24 @@ class PostComments{
 
     newCommentDom(comment){
         // I've added a class 'delete-comment-button' to the delete comment link and also id to the comment's li
-        return $(`<li id="comment-${ comment._id }">
-                        <p>
-                            
-                            ${comment.content}
-                            <small>
-                            <a class="delete-comment-button" href="/comments/destroy/${comment._id}">Delete</a>
-                        </small>
-                            <br>
-                            <small>
-                                ${comment.user.name}
-                            </small>
-                        </p>    
-
+        return $(`<li id="comment-${ comment._id }" class="comment-display">
+        <p>
+        ${comment.content}
+      <br>
+        ${comment.user.name}
+      </p>
+      
+     <div class="comment-btns">
+         
+              <a href="/likes/toggle/?id=${comment._id}&type=Comment" data-likes="${comment.likes.length}" class="like-btn-link">
+                  <button class='like-btn' ><span id='like-count-${ comment._id }-Comment'>${comment.likes.length}</span> &nbsp <i class="fa-solid fa-heart"></i> </button>
+              </a>   
+          
+              <a href="/comments/destroy/${comment._id}" class="delete-comment-button">
+                  <button class='delete-comment-btn' >Delete</button>
+              </a>
+          
+     </div>
                 </li>`);
     }
 

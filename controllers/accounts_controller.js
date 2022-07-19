@@ -38,7 +38,7 @@ module.exports.verifyEmail=async function(req,res){
 
             //resetPassMailer.passResetToken(token);
 
-            req.flash('success','Password reset link sent!!');
+            req.flash('success','Password reset link sent to email provided!!');
             return res.redirect('back');
         }else{
             req.flash('error' , 'Invalid User !');

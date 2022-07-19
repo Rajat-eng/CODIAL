@@ -1,6 +1,6 @@
 const Post=require('../models/post');
 const Comment=require('../models/comment');
-
+const Like=require('../models/like');
 
 module.exports.create=async function(req,res){
     try{
@@ -33,6 +33,11 @@ module.exports.destroy=async function(req,res){
         // ideally user.id should be user._id but user.id works bcoz it is converted into string by mongoose
         //post.user is accessed in post schema which is userID and req.user.id
         if(post.user==req.user.id){ // only user who has posted can delete it
+
+            await Like.deleteMany({likeabele:post._id,moModel:'Post'});
+            for(let i=0;i<post.comments.length;i++){
+                await Like.deleteOne({likeable:post.comments[i]._id,onModel:'Comment'});
+            }
             post.remove();
             await Comment.deleteMany({post:req.params.id});
             if(req.xhr){

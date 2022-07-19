@@ -1,0 +1,44 @@
+.hidden{
+    display: none;
+}
+.posts-display{
+    margin-bottom: 20px;
+    padding: 10px;
+
+    .post-btns{
+        margin-bottom:20px;
+        min-width: 100px;
+        &:hover{
+            cursor: pointer;
+        }
+        .like-btn{
+            border:none;
+            outline:none;
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+        .like-btn-link{
+            &:active{
+                .like-btn{
+                    i{
+                        color:green;
+                    }
+                }
+            }
+        }
+        
+    }
+    .post-comments{
+        form{
+            input{
+                background-color: antiquewhite;
+            }
+        }
+    }
+    .post-comments-list{
+        ul{
+            list-style: none;
+        }
+    }
+}

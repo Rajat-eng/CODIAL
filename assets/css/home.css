@@ -1,8 +1,55 @@
 #home-container {
-  display: flex; }
+  display: flex;
+  color: white;
+  justify-content: space-between; }
   #home-container #feed-posts {
     width: 70%;
-    padding: 10px; }
+    padding: 20px;
+    border: 2px solid black; }
+    #home-container #feed-posts h2 {
+      color: white;
+      text-align: center; }
+    #home-container #feed-posts #new-post-form {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      #home-container #feed-posts #new-post-form textarea {
+        width: 90%;
+        border: none;
+        outline: none;
+        height: 4rem;
+        margin-bottom: 10px; }
+      #home-container #feed-posts #new-post-form #submit-btn {
+        height: 25px;
+        width: 60px;
+        background-color: orange;
+        color: whitesmoke;
+        font-size: 1rem;
+        border-radius: 5px;
+        padding: 2px 4px 2px 4px;
+        outline: none; }
+        #home-container #feed-posts #new-post-form #submit-btn:hover {
+          cursor: pointer; }
+        #home-container #feed-posts #new-post-form #submit-btn:active {
+          outline: none;
+          border: none;
+          transform: scale(0.95); }
+    #home-container #feed-posts #posts-list-container {
+      width: 90%; }
+      #home-container #feed-posts #posts-list-container ul {
+        list-style: none; }
   #home-container #user-friends {
+    color: orange;
     width: 30%;
-    border-left: 1px solid black; }
+    border-left: 1px solid black;
+    padding-left: 20px; }
+    #home-container #user-friends a {
+      text-decoration: none;
+      color: antiquewhite;
+      font-size: 1.5rem; }
+      #home-container #user-friends a:hover {
+        color: bisque; }
+      #home-container #user-friends a:active {
+        color: floralwhite; }

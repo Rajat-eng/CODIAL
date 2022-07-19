@@ -1,5 +1,6 @@
 const Comment=require('../models/comment');
 const Post=require('../models/post');
+const Like=require('../models/like');
 const commentsMailer=require('../mailers/comments_mailer');
 const commentEmailWorker=require('../workers/comment_email_worker');
 const queue = require('../config/kue');
@@ -52,9 +53,9 @@ module.exports.destroy= async function(req,res){
         let post=await Post.findById(comment.post);
         if(comment.user==req.user.id || post.user==req.user.id){ // if user who has commented also has logged in  
             let postId=comment.post; // extract post id on which comment is made before deleteting comment
+            await Like.deleteMany({likeable:comment._id,onModel:'Comment'});
             comment.remove();
             let post=await Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}});
-
 
             if(req.xhr){
                 return res.status(200).json({
@@ -64,7 +65,6 @@ module.exports.destroy= async function(req,res){
                     message: "Comment deleted"
                 });
             }
-
 
             req.flash('success','comment deleted from the post');
             return res.redirect('back'); // pull out id from list of coomets in post schema

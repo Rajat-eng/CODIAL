@@ -12,9 +12,9 @@ module.exports.home= async function(req,res){
         .populate({
             path:'comments', // comments on post from post schema
             populate:{
-                path:'user' // user who has commmented from comment schema
-            }
-        });
+                path:'user likes' // user who has commmented from comment schema
+            },
+        }).populate('likes');
         
         let users= await User.find({});
     

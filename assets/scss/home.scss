@@ -1,11 +1,76 @@
 #home-container{
     display: flex;
+    color:white;
+    justify-content: space-between;
     #feed-posts{
         width:70%;
-        padding:10px;
+        padding:20px;
+        border:2px solid black;
+
+        h2{
+            color:white;
+            text-align: center;
+        }
+
+        #new-post-form{
+            width:90%;
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            textarea{
+                width: 90%;
+                border:none;
+                outline:none;
+                height:4rem;
+                margin-bottom: 10px;
+            }
+
+            #submit-btn{
+                height:25px;
+                width: 60px;
+                background-color: orange;
+                color: whitesmoke;
+                font-size: 1rem;
+                border-radius: 5px;
+                padding: 2px 4px 2px 4px;
+                outline:none;
+
+                &:hover{
+                    cursor: pointer;
+                }
+                &:active{
+                    outline: none;
+                    border: none;
+                    transform: scale(0.95);
+                }
+            }
+        }
+
+        #posts-list-container{
+            width: 90%;
+            ul{
+                list-style: none;
+            }
+        }
     }
     #user-friends{
+        color:orange;
         width:30%;
         border-left: 1px solid black;  
+        padding-left: 20px;
+        
+        a{
+            text-decoration: none;
+            color: antiquewhite;
+            font-size: 1.5rem;
+            &:hover{
+                color: bisque;
+            }
+            &:active{
+                color: floralwhite;
+            }
+        }
     }
 }

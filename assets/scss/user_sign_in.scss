@@ -1,0 +1,55 @@
+#sign-in-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1{
+        color: white;
+    }
+    form{
+        background-color: rgb(231, 217, 12);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        height: 50%;
+        padding: 10px 20px 10px 20px;
+        
+        .submit-btn{
+            width:100px;
+            height: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(red,blue);
+            color: antiquewhite;
+        }  
+        input{
+            width:40%;
+            height: 30px;
+            outline: none;
+            border: none;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            &:hover{
+                border-bottom: 2px solid black; 
+            }
+              
+        }   
+    }
+    p{
+        a{
+            text-decoration: none;
+            color: white;
+            font-size: 1.5rem;
+            &:active{
+                color: red;
+            }
+            &:hover{
+                color:rgb(93, 214, 198);
+            }
+        }
+    }
+}
+
+

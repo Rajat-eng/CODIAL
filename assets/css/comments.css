@@ -1,0 +1,14 @@
+.comment-display {
+  padding: 10px; }
+  .comment-display .comment-btns {
+    margin-bottom: 20px;
+    min-width: 100px; }
+    .comment-display .comment-btns:hover {
+      cursor: pointer; }
+    .comment-display .comment-btns .like-btn {
+      border: none;
+      outline: none; }
+      .comment-display .comment-btns .like-btn:hover {
+        transform: scale(1.2); }
+    .comment-display .comment-btns .like-btn-link:active .like-btn i {
+      color: green; }
