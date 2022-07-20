@@ -40,16 +40,16 @@
       width: 90%; }
       #home-container #feed-posts #posts-list-container ul {
         list-style: none; }
-  #home-container #user-friends {
-    color: orange;
-    width: 30%;
-    border-left: 1px solid black;
-    padding-left: 20px; }
-    #home-container #user-friends a {
+
+.users-list-wrapper {
+  width: 30%;
+  text-align: center; }
+  .users-list-wrapper .users-list {
+    text-align: center;
+    width: inherit;
+    margin: auto; }
+    .users-list-wrapper .users-list a {
+      color: coral;
       text-decoration: none;
-      color: antiquewhite;
-      font-size: 1.5rem; }
-      #home-container #user-friends a:hover {
-        color: bisque; }
-      #home-container #user-friends a:active {
-        color: floralwhite; }
+      font-size: 1rem;
+      font-weight: bold; }

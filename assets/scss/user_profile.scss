@@ -1,3 +1,33 @@
-body{
-    background-color: bisque;
+#profile{
+    color:white;
+    padding-left: 20px;
+    img{
+        margin: 20px;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        width:fit-content;
+        justify-content: center;
+        align-items: center;
+        input{
+            margin-bottom: 10px;
+            background-color: azure;
+        }
+    }
+
+    .submit-btn{
+        width:100px;
+        height: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        background: linear-gradient(red,blue);
+        color: antiquewhite;
+    }
+
+    #friend-toggle-button{
+        background-color: orange;
+        
+    }
 }

@@ -17,12 +17,25 @@ module.exports.home= async function(req,res){
         }).populate('likes');
         
         let users= await User.find({});
-    
+        let usersFriendships;
+
+        if(req.user){
+            // user should be logged in
+            usersFriendships=await User.findById(req.user._id).populate({
+                path:'friendships',
+                populate:{
+                    path:'from_user to_user'
+                }
+            });
+        }
+        console.log(usersFriendships);
         return res.render('home',{
             title:"codeial|Home",
             posts:posts,
             all_users:users,
+            myUser:usersFriendships
         });
+
     }catch(err){
         console.log("Error",err);
         return;

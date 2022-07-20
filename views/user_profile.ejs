@@ -1,20 +1,36 @@
 <link rel="stylesheet" href="/css/user_profile.css">
+<div id="profile">
+    <img src="<%=profile_user.avatar%>" alt="<%=profile_user.name%>" width="200" height="200">
 
+    <!-- no need to check locals.user bcoz password authentication is there -->
+    
+    <% if(user.id==profile_user.id){%>
+        <!-- if user matches then show the form  -->
+        
+        <form action="/users/update/<%=profile_user._id%>"enctype="multipart/form-data" method="post">
+            <h3>Update form </h3>
+            <input type="text" placeholder="Your Name"   name="name" value="<%=profile_user.name%>"  required>
+            <input type="email" placeholder="Your Email" name="email" value="<%=profile_user.email%>"  required>
+            <input type="file" name="avatar" placeholder="profile-pitchure">
+            <input type="submit" value="update" class="submit-btn">
+        </form>
+    <%}else{%>
+        <!-- only profile info -->
+        <h3><%=profile_user.name%></h3>
+        <h3><%=profile_user.email%></h3>
+        
+        <a href="/friends/toggle/?userID=<%=profile_user._id%>" id="friend-toggle">
+            <button id="friend-toggle-button">
+                <%if(isFriend){%>
+                    <%="Remove"%>
+                <%}else{%>
+                    <%="Add"%>    
+                <%}%>
+            </button>
+        </a>   
+    <%}%>
 
-<img src="<%=user.avatar%>" alt="<%=user.name%>" width="200" height="200">
+</div>
 
-  <!-- no need to check locals.user bcoz password authentication is there -->
-<% if(user.id==profile_user.id){%>
-    <!-- if user matches then show the form  -->
-    <form action="/users/update/<%=profile_user.id%>"enctype="multipart/form-data" method="post">
-        <input type="text" placeholder="Your Name"   name="name" value="<%=profile_user.name%>"  required>
-        <input type="email" placeholder="Your Email" name="email" value="<%=profile_user.email%>"  required>
-        <input type="file" name="avatar" placeholder="profile-pitchure">
-        <input type="submit" value="update">
-    </form>
-<%}else{%>
-    <!-- only profle info -->
-    <p><%=profile_user.name%></p>
-    <p><%=profile_user.email%></p>
-<%}%>
+<script src="/js/user_profile.js"></script>
 

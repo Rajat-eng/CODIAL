@@ -55,22 +55,22 @@
             }
         }
     }
-    #user-friends{
-        color:orange;
-        width:30%;
-        border-left: 1px solid black;  
-        padding-left: 20px;
-        
+
+    
+}
+.users-list-wrapper{
+    width:30%;
+    text-align: center;
+    .users-list{
+        text-align:center;
+        width:inherit;
+        margin: auto;
         a{
+            color: coral;
             text-decoration: none;
-            color: antiquewhite;
-            font-size: 1.5rem;
-            &:hover{
-                color: bisque;
-            }
-            &:active{
-                color: floralwhite;
-            }
+            font-size: 1rem;
+            font-weight: bold;
         }
     }
 }
+

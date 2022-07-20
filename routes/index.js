@@ -12,7 +12,7 @@ router.use('/posts',require('./posts'));
 router.use('/comments',require('./comments'));
 router.use('/accounts',require('./accounts'));
 router.use('/likes',require('./likes'));
-
+router.use('/friends',require('./friends'));
 router.use('/api', require('./api'));
 
 // for any further routes, access from here

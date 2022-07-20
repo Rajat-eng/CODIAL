@@ -1,2 +1,23 @@
-body {
-  background-color: bisque; }
+#profile {
+  color: white;
+  padding-left: 20px; }
+  #profile img {
+    margin: 20px; }
+  #profile form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: center;
+    align-items: center; }
+    #profile form input {
+      margin-bottom: 10px;
+      background-color: azure; }
+  #profile .submit-btn {
+    width: 100px;
+    height: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(red, blue);
+    color: antiquewhite; }
+  #profile #friend-toggle-button {
+    background-color: orange; }

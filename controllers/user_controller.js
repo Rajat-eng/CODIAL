@@ -3,24 +3,36 @@ const fs=require('fs');
 const path=require('path');
 
 
-module.exports.profile=function(req,res){
-    User.findById(req.params.id,function(err,user){
+module.exports.profile=async function(req,res){
+    let user=await User.findById(req.params.id);
+
+    let usersFriendships;
+    if(req.user){
+        usersFriendships = await User.findById(req.user._id).populate({ 
+           path : 'friendships',
+           options :  { sort: { createdAt: -1 } },
+           populate : {
+               path: 'from_user to_user'
+           }})
+    }
+
+    let isFriend=false;
+
+    for(friendship of usersFriendships.friendships){
+        if(friendship.from_user.id==user.id || friendship.to_user.id==user.id){
+            isFriend=true;
+            break;
+        }
+    }
+
         return res.render('user_profile',{
             title:"profile",
             profile_user:user,
+            isFriend:isFriend
         });
-    })    
 }
+
 module.exports.update= async function(req,res){
-    // only logged in user can edit
-    // if(req.user.id==req.params.id){
-    //     User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
-    //         return res.redirect('back');
-    //     })
-    // }else{
-    //     return res.status('401').send('Unauthorized');
-    // }
-    
     if(req.user.id==req.params.id){
         try{
             let user=await User.findById(req.params.id);

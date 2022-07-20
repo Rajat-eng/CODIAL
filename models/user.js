@@ -19,7 +19,11 @@ const userSchema=new mongoose.Schema({
     avatar:{
         // contains path of avatar user.avatar= AVATAR_PATH +'/'+ filename
         type:String,
-    }
+    },
+    friendships:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Friendship'
+    }]
 },{
     // account created and updated timestamps
     timestamps:true 
