@@ -18,6 +18,17 @@ const passportJWT=require('./config/passport-jwt-strategy');
 const passportGoogle=require('./config/passport-google-oauth2-strategy');
 const MongoStore=require('connect-mongo');
 
+
+// chat server
+const http = require('http');
+const chatServer = http.createServer(app);
+const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000, () => {
+  console.log('chat Server listening on :5000');
+});
+
+
+
 // session cookies
 const session=require('express-session'); // create session cookie in encrypred form
 

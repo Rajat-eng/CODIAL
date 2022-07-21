@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/css/_chat_box.css">
+<% if(locals.user){%>
+    <div class="chat-box-wrapper">
+        <div class="chat-box-header">
+            <span>CHAT BOX</span>
+            <i class="fas fa-arrows-alt-v" id="chat-size-button" ></i>
+        </div>
+        
+        <div id="user-chat-box">
+
+            <ul class="chat-message-list">
+                <!-- <li class="other-message">
+                    <span>Recieve Message</span>
+                </li>
+                <li class="self-message">
+                    <span>Send Message</span>
+                </li> -->
+            </ul>
+        </div>
+        <div id="chat-message-input-container">
+            <input type="text" name="chat-message-input" id="chat-message-input">
+            <button id="send-message">Send</button>
+        </div>
+    </div>
+<%}%>

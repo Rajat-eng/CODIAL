@@ -28,7 +28,6 @@ module.exports.home= async function(req,res){
                 }
             });
         }
-        console.log(usersFriendships);
         return res.render('home',{
             title:"codeial|Home",
             posts:posts,
