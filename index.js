@@ -1,6 +1,10 @@
 const express= require('express');
 const app=express();
 
+
+// environment
+const env=require('./config/environment');
+const logger=require('morgan');
 // cookies
 const cookieParser=require('cookie-parser');
 
@@ -37,14 +41,17 @@ const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
 const customMware=require('./config/middleware');
 
-app.use(sassMiddleware({
-  src:'./assets/scss',
-  dest:'./assets/css',
-  debug:true,
-  outputStyle:'extended',
-  prefix:'/css'
-})
-);
+if(env.name=='development'){
+    app.use(sassMiddleware({
+        src:path.join(__dirname,env.asset_path,'scss'),
+        dest:path.join(__dirname,env.asset_path,'css'),
+        debug:true,
+        outputStyle:'extended',
+        prefix:'/css'
+      })
+      );
+}
+
 
 // parser use
 app.use(express.urlencoded());
@@ -60,7 +67,7 @@ app.set('layout extractScripts',true);
 
 
 // use static
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 
 // make uploads path available 
 app.use('/uploads',express.static( path.join(__dirname,'uploads')) );
@@ -74,11 +81,11 @@ app.set('views','./views');
 app.use(session({
         name:'codeial',
         // TODO change secret before deployment in production mode
-        secret:'blahsomething',
+        secret:env.session_cookie_key,
         saveUninitialized:false,
         resave:false,
         cookie:{
-            maxAge: (1000*60*60), // 1sec*60*60
+            maxAge: (1000*60*30), // 1sec*60
         },
         store:MongoStore.create( // session gets permanenntly stored even if server expires
             {
@@ -98,6 +105,8 @@ app.use(passport.setAuthenticatedUser); // checks if a cookie is present and sen
 app.use(flash());
 app.use(customMware.setFlash);
 
+// use morgan
+app.use(logger(env.morgan.mode,env.morgan.options));
 
 //  use routes
 app.use('/',require('./routes'));

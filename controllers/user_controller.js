@@ -72,7 +72,7 @@ module.exports.update= async function(req,res){
 module.exports.signUp=function(req,res){
     // if logged in sign up page should not get open
     if(req.isAuthenticated()){
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     }
     return res.render('user_sign_up',{
         title:"codeial|Sign Up",
@@ -83,7 +83,7 @@ module.exports.signUp=function(req,res){
 module.exports.signIn=function(req,res){
     // if logged in sign up page should not get open
     if(req.isAuthenticated()){
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     }
     return res.render('user_sign_in',{
         title:"codeial|Sign In"

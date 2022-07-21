@@ -6,7 +6,8 @@ const User=require('../models/user');
 module.exports.home= async function(req,res){
     // populate gives user object {id,name,email ..}
     try{
-        let posts=await Post.find({})
+        if(req.isAuthenticated()){
+            let posts=await Post.find({})
         .sort('-createdAt')
         .populate('user')
         .populate({
@@ -34,9 +35,16 @@ module.exports.home= async function(req,res){
             all_users:users,
             myUser:usersFriendships
         });
+        }else{
+            res.redirect('users/sign-in');
+        }
+        
 
     }catch(err){
         console.log("Error",err);
         return;
     }
 };
+
+
+
