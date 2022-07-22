@@ -1,5 +1,6 @@
 const express= require('express');
 const app=express();
+require('./config/view_helpers')(app);
 
 
 // environment
@@ -119,3 +120,6 @@ app.listen(port,function(err){
     }
     console.log(`server is running on port:${port}`);
 });
+
+
+

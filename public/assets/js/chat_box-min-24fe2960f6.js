@@ -1,0 +1,1 @@
+{let t=$("#chat-size-button"),a=$(".chat-box-wrapper");t.click(function(){a[0].classList.contains("chat-box-wrapper")?a[0].classList.remove("chat-box-wrapper"):a[0].classList.add("chat-box-wrapper"),a[0].classList.toggle("minimised-ht")})}
