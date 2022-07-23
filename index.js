@@ -56,7 +56,7 @@ if(env.name=='development'){
 
 // parser use
 app.use(express.urlencoded({extended:false}));
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 
 // use layouts
 app.use(expressLayouts);

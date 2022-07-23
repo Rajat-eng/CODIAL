@@ -50,3 +50,6 @@
 ::1 - - [22/Jul/2022:15:49:20 +0000] "POST /comments/create HTTP/1.1" 200 313 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
 ::1 - - [22/Jul/2022:15:49:22 +0000] "GET /comments/destroy/62dac70005088d328d2bd5b2 HTTP/1.1" 200 78 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
 ::1 - - [22/Jul/2022:15:49:23 +0000] "GET /posts/destroy/62dac6fd05088d328d2bd5ad HTTP/1.1" 200 72 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+::1 - - [23/Jul/2022:10:05:39 +0000] "GET / HTTP/1.1" 302 72 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+::1 - - [23/Jul/2022:10:06:50 +0000] "GET /users/sign-in HTTP/1.1" 200 2206 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+::1 - - [23/Jul/2022:10:06:51 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8000/users/sign-in" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
