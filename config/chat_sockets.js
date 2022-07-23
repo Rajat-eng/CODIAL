@@ -3,7 +3,7 @@
 module.exports.chatSockets=function(socketServer){
     let io=require('socket.io')(socketServer,{
         cors:{
-            origin: "*",
+            origin: "http://35.89.35.17:8000",
             methods: ["GET", "POST"],
             transports:["websockets","polling"],
             credentials: true

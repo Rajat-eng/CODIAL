@@ -3,7 +3,7 @@ class chatEngine{
     constructor(chatBoxId,userEmail){
         this.chatBoxId=$(`#${chatBoxId}`);
         this.userEmail=userEmail;
-        this.socket=io.connect('http://localhost:5000',{transport:['websocket']}); // available from cdn file
+        this.socket=io.connect('http://35.89.35.17:5000',{transport:['websocket']}); // available from cdn file
         // io.connect fires event connection on socket server --> see chat sockets
 
         if(this.userEmail){
